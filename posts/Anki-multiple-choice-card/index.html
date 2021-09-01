@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="og:site_name" content="An iOS Blog"/><link rel="canonical" href="https://www.anne-hanw.com/posts/Anki-multiple-choice-card"/><meta name="twitter:url" content="https://www.anne-hanw.com/posts/Anki-multiple-choice-card"/><meta name="og:url" content="https://www.anne-hanw.com/posts/Anki-multiple-choice-card"/><title>How to create multiple choices question on Anki | An iOS Blog</title><meta name="twitter:title" content="How to create multiple choices question on Anki | An iOS Blog"/><meta name="og:title" content="How to create multiple choices question on Anki | An iOS Blog"/><meta name="description" content="This is a test description"/><meta name="twitter:description" content="This is a test description"/><meta name="og:description" content="This is a test description"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to An iOS Blog"/><meta name="twitter:image" content="https://www.anne-hanw.com/images/profile.png"/><meta name="og:image" content="https://www.anne-hanw.com/images/profile.png"/></head><head><script type="text/javascript" src="https://kit.fontawesome.com/f581f467c3.js" crossorigin="anonymous"></script><link rel="shortcut icon" href="images/avataaars.png" type="image/png"/><link rel="stylesheet" href="/splash.css" type="text/css"/><link rel="stylesheet" href="/blog.css" type="text/css"/></head><body class="item-page"><header><div class="wrapper"><a href="/"><img src="/images/avataaars.png"/></a></div><div class="site-name"><a href="/">Annicha H.</a></div><div class="navigation-div"><nav><ul><li><a href="/posts" class="selected">Posts</a></li><li><a href="/apps">Apps</a></li></ul></nav></div><div class="clear"></div></header><div class="wrapper"><article><div class="content"><h1>How to create multiple choices question on Anki</h1><p>Are you looking for a way to create multiple choices question on Anki?</p><p>This post shows how to do that. After this post, you will be able to create a card like this one.</p><img src="/images/Anki-preview-bacon.png" alt="Bacon card preview"/><p>The answer choices are randomized cloze hint.</p><img src="/images/Anki-editor-bacon.png" alt="Bacon card input preview"/><h3>First, make a copy of cloze type.</h3><p>Firstly, go the the add card editor, press <strong>Type</strong> on the top left.</p><img src="/images/Anki-type-button.png" alt="Type button"/><p>This will bring up a list of note type, then on the bottom left, press <strong>manage</strong>.</p><img src="/images/Anki-choose-note-type.png" alt="Note type list"/><p>This will shows a the same list of existing note types but with buttons on the right. Press <strong>add</strong> to create new type.</p><img src="/images/Anki-note-type-list.png" alt="Manage note types"/><p>This will bring up another list, this list allows you to create a copy of the chosen note type. We are going to copy the Cloze type. Press <strong>Add: Cloze</strong> then press <strong>OK</strong>.</p><img src="/images/Anki-add-note-type.png" alt="Bacon car input preview"/><p>Give the new note type a name.</p><img src="/images/Anki-rename-type.png" alt="Bacon car input preview"/><p>Now, close all the pop ups, go back to the card editor and choose the newly created note type.</p><p>Then, bring up the fields list by pressing <strong>Fields</strong></p><p>Edit it until it so that it looks like this</p><img src="/images/Anki-editor-fields.png" alt="Bacon car input preview"/><h2>Edit the card template.</h2><p>Back to the editor, press the cards button to bring up the template. Edit them to look like this.</p><h3>Front</h3><pre><code>&lt;h2&gt;{{<span class="type">Topic</span>}}&lt;/h2&gt;
+
+<span class="comment">// This is where the text and choices will populate</span>
+&lt;div id=<span class="string">"choices"</span> <span class="keyword">class</span>=<span class="string">"choice-holder"</span>&gt;{{cloze:<span class="type">Text</span>}}&lt;/div&gt;
+
+&lt;script&gt;
+
+<span class="comment">// select cloze element</span>
+<span class="keyword">var</span> cloze = document.<span class="call">querySelectorAll</span>(<span class="string">".cloze"</span>);
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cloze.<span class="property">length</span>; i++) {
+	<span class="keyword">var</span> hint = cloze[i].innerHTML
+	
+	<span class="comment">// anki create additional bracket for cloze hint, we want them removed</span>
+	<span class="keyword">var</span> newHint = hint.<span class="call">substring</span>(<span class="number">1</span>, hint.<span class="property">length</span> - <span class="number">1</span>)
+
+	cloze[i].textContent = <span class="string">""</span>;
+
+	<span class="keyword">if</span> (newHint != <span class="string">"..."</span>)  {
+
+		<span class="keyword">var</span> list = <span class="string">""</span>
+		<span class="comment">// split the choices</span>
+		<span class="keyword">var</span> arr = newHint.<span class="call">split</span>(<span class="string">"/"</span>);
+	
+		<span class="keyword">if</span> (arr.<span class="property">length</span> &gt; <span class="number">1</span>) {
+		    <span class="comment">//shuffle the choices</span>
+		    <span class="call">shuffle</span>(arr)
+		}
+
+		<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arr.<span class="property">length</span>; j++) {
+			<span class="comment">// uncomment this line if you want the choices to be in separate lines
+			//list = list + "&lt;br&gt;"</span>
+			list = list + <span class="string">"&lt;span class=box&gt;"</span> + arr[j] + <span class="string">"&lt;/span&gt;"</span>
+		}
+
+		<span class="comment">//put back the separated list to the card</span>
+		cloze[i].innerHTML = list
+	} <span class="keyword">else</span> {
+	cloze[i].textContent += <span class="string">"_____ "</span>;
+	}
+}
+
+function shuffle (array) {
+  <span class="keyword">var</span> i = <span class="number">0</span>
+	, j = <span class="number">0</span>
+	, temp = null
+
+  <span class="keyword">for</span> (i = array.<span class="property">length</span> - <span class="number">1</span>; i &gt; <span class="number">0</span>; i -= <span class="number">1</span>) {
+	j = <span class="type">Math</span>.<span class="call">floor</span>(<span class="type">Math</span>.<span class="call">random</span>() * (i + <span class="number">1</span>))
+	temp = array[i]
+	array[i] = array[j]
+	array[j] = temp
+  }
+}
+
+&lt;/script&gt;
+</code></pre><h3>Back</h3><pre><code>&lt;span id=<span class="string">"answer"</span> &gt;{{cloze:<span class="type">Text</span>}}&lt;/span&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;span id=<span class="string">"hidden"</span>&gt;{{cloze:<span class="type">Clozed Extra</span>}}&lt;/span&gt;
+
+&lt;div id=<span class="string">"note"</span> <span class="keyword">class</span>=<span class="string">"gray"</span>&gt;&lt;/div&gt;
+
+
+&lt;span <span class="keyword">class</span>=<span class="string">"gray"</span>&gt;&lt;br&gt;{{<span class="type">Extra</span>}}&lt;/span&gt;
+
+&lt;script&gt;
+<span class="keyword">var</span> holder = document.<span class="call">getElementById</span>(<span class="string">"note"</span>);
+<span class="keyword">var</span> hiddenContent = null
+hiddenContent = document.<span class="call">getElementById</span>(<span class="string">"hidden"</span>);
+
+<span class="keyword">if</span> (hiddenContent != <span class="string">""</span>) {
+	<span class="keyword">var</span> hiddenNote = document.<span class="call">querySelectorAll</span>(<span class="string">"#hidden .cloze"</span>);
+	<span class="keyword">if</span> (hiddenNote[<span class="number">0</span>] != null) {
+			holder.<span class="property">innerHTML</span> = hiddenNote[<span class="number">0</span>].innerHTML
+	}
+	
+}
+
+&lt;/script&gt;
+
+
+&lt;script&gt;
+
+<span class="keyword">var</span> clozes = document.<span class="call">querySelectorAll</span>(<span class="string">"#answer .cloze"</span>);
+<span class="comment">//document.getElementById("answer").innerHTML = "hello";</span>
+
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; clozes.<span class="property">length</span>; i++) {
+	<span class="keyword">var</span> temp = clozes[i].innerHTML;
+	clozes[i].innerHTML =  '&lt;span <span class="keyword">class</span>=<span class="string">"box green"</span>&gt;' + temp + <span class="string">"&lt;/span&gt;"</span>
+}
+
+
+&lt;/script&gt;
+</code></pre><h3>Style</h3><pre><code>.<span class="call">card</span> {
+ font-family: arial;
+ font-size: 20px;
+ text-align: left;
+ color: black;
+ background-color: white;
+}
+
+<span class="call">img</span> {
+	max-height: 140px
+}
+
+.<span class="call">hide</span> {
+	visibility: hidden;
+	font-size: 0px;
+}
+
+.<span class="property">hide</span> img{
+	max-width: 0px;
+}
+
+.<span class="call">cloze</span> {
+ font-weight: bold;
+ color: brown;
+  visibility: visible;
+}
+
+
+.<span class="call">box</span> {
+  color: brown;
+  display: inline-block;
+  border-radius: <span class="number">1</span>.5em;
+  padding: 4px 8px;
+  border: solid 2px;
+  margin: 5px;
+  border-color: brown;
+  background: pink;
+	margin: <span class="number">1</span>.5px;
+}
+
+#hidden {
+	display: none;
+}
+
+ .<span class="call">gray</span> {
+	color: gray;
+}
+
+.<span class="call">green</span> {
+	color: green;
+	border-color: green;
+	background-color: lightyellow;
+}
+
+</code></pre></div><span>Tagged with: </span><ul class="tag-list"><li><a href="/tags/anki">Anki</a></li><li><a href="/tags/flashcard">flashcard</a></li><li><a href="/tags/anki-card-customization">Anki card customization</a></li><li><a href="/tags/learning">learning</a></li></ul></article></div><footer><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><p><span><a href="/feed.rss">RSS</a> | </span><a href="https://www.linkedin.com/in/anne-hanw/"><span class="fab fa-linkedin"></span></a> | <a href="https://github.com/annicha"><span class="fab fa-github"></span></a></p><p>Copyright © Annicha Hanwilai 2021</p></footer></body></html>

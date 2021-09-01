@@ -1,0 +1,428 @@
+//
+//  styles.css
+//  
+//	Modified from Publish Foundation theme by John Sundell
+//  Created by Annicha Hanwilai on 20/7/21.
+//
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.far, .fas {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.fab {
+	padding-left: 4px;
+	padding-right: 4px;
+	font-size: 1.5em;
+}
+
+
+body {
+	background: #FFF;
+	color: #000;
+	font-family: Helvetica, Arial;
+	text-align: left;
+	clear: both;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+}
+
+h4, h3, h2 {
+	margin-top: 40px;
+}
+
+img {
+	max-width: 100%;
+}
+
+.float-left {
+	float: left;
+	margin-top: 0;
+	margin-bottom: 0;
+	display: block;
+	align: left;
+}
+
+.block {
+	display: inline-block;
+}
+
+.wrapper {
+	margin-top: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0px;
+	text-align: left;
+}
+
+header {
+	background-color: #fff;
+	margin-left: 0;
+	border-bottom-width: 1.5px;
+	border-bottom-style: solid;
+	border-bottom-color: #000;
+}
+
+header .wrapper {
+	padding: 10px;
+	padding-top: 0px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	text-align: left;
+	float: left;
+}
+
+header .clear {
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+
+header a {
+	text-decoration: none;
+}
+
+header img {
+	max-width: 90px;
+	max-height: 90px;
+	float: left;
+}
+
+header .site-name a {
+	font-size: 1.5em;
+	color: #000;
+	font-weight: bold;
+}
+
+
+
+nav {
+	margin-top: 20px;
+}
+
+nav ul {
+	padding: 0px;
+}
+
+nav li {
+	display: inline-block;
+	margin: 0 25px 0 0;
+	line-height: 1.5em;
+}
+
+nav li .selected {
+	display: inline-block;
+	background-color: #000;
+	color: #ddd;
+	padding: 2.5px 7px;
+	border: 2px solid #333;
+	border-radius: 15px;
+}
+
+.navigation-div {
+	float: right;
+	margin-right: 0px;
+	margin-top: 10px;
+}
+
+h1 {
+	margin-left: 5px;
+	margin-bottom: 20px;
+	font-size: 2em;
+}
+
+h2 {
+	margin: 20px 0;
+}
+
+p {
+	line-height: 1.5em;
+	margin-bottom: 10px;
+}
+
+a {
+	color: inherit;
+}
+
+.description {
+	margin-bottom: 40px;
+}
+
+ul {
+	padding: 0px;
+}
+
+.item-list > li {
+	display: block;
+	padding: 20px;
+	padding-top: 10px;
+	border-radius: 15px;
+	background-color: #eee;
+	margin-bottom: 20px;
+}
+
+.item-list > li:last-child {
+	margin-bottom: 0;
+}
+
+.item-list h1 {
+	margin-bottom: 15px;
+	font-size: 1.3em;
+}
+
+.item-list p {
+	margin-bottom: 0;
+}
+
+.tag-list {
+	margin-bottom: 15px;
+}
+
+.tag-list li,
+.tag {
+	display: inline-block;
+	background-color: #FEAEB9;
+	color: #000;
+	padding: 4px 6px;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.tag-list a,
+.tag a {
+	text-decoration: none;
+}
+
+.item-page .tag-list {
+	display: inline-block;
+}
+
+.content {
+	margin-bottom: 40px;
+}
+
+.browse-all {
+	display: block;
+	margin-bottom: 30px;
+}
+
+.all-tags li {
+	font-size: 1.4em;
+	margin-right: 10px;
+	padding: 6px 10px;
+}
+
+footer {
+	float: none;
+	text-align: left;
+	color: #8a8a8a;
+	font-size: 0.7em;
+	border-top-width: 1.5px;
+	border-top-style: solid;
+	border-top-color: #000;
+}
+
+
+body .description-text {
+	font-size: 1em;
+	color: #8a8a8a;
+}
+
+
+.self-description {
+	padding-top: 50px;
+	padding-bottom: 30px;
+	margin-bottom: 10px;
+}
+
+.site-name {
+	margin-top: 35px;
+	float: left;
+	display: block;
+}
+
+
+/* Form */
+input[type=text], input[type=email], select, textarea {
+  width: 95%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #FEAEB9;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+
+label {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #ccc;
+  color: #000;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.container {
+  width: 60%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-bottom: 60px;
+}
+
+
+ul.tiny-app-list > li {
+	max-width: 25%;
+	padding: 10px 20px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	float: left;
+}
+
+ul.tiny-app-list {
+	list-style: none;
+}
+
+.app-image {
+	min-height: 100%;
+}
+
+.app-image-container {
+	padding-bottom: 0px;
+}
+
+.app-image-container h4 {
+	text-align: center;
+	margin-top: 0px;
+}
+
+.tiny-app-list li:hover {
+	background-color: #eee;
+}
+
+h1.center {
+	text-align: center;
+}
+
+div.empty-div {
+	height: 300px;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #222;
+	}
+
+	body,
+	header .site-name a {
+		color: #ddd;
+	}
+	
+	
+	nav li .selected {
+		background-color: #FEAEB9;
+		color: #000;
+		border-color: #000;
+		border-radius: 15px;
+	 }
+
+
+	.item-list > li {
+		background-color: #333;
+	}
+	
+	.app-image-container {
+		background-color: clear;
+	}
+
+	header {
+		background-color: #222;
+		border-bottom-color: #fff;
+	}
+	
+	footer {
+		border-top-color: #fff;
+	}
+	
+	body .description-text {
+		color: #b2b2b2;
+	}
+	
+	
+	.container {
+		background-color: #000;
+	}
+	
+	input[type=text], input[type=email], select, textarea {
+	  background-color: #302F4C;
+	  color: #fff;
+	}
+	
+	input[type=submit] {
+	  background-color: #DFAFB3;
+	  color: #000;
+	}
+
+	.tiny-app-list li:hover {
+		background-color: #302F4C;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	
+	div.empty-div {
+		height: 100px;
+	}
+	
+	.container{
+		width: 90%;
+	}
+	
+	ul.tiny-app-list li {
+		max-width: 40%;
+	}
+}
+
+@media screen and (max-width: 526px) {
+	ul.tiny-app-list li {
+		max-width: none;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+
+
+@media screen and (max-width: 480px) {
+	.navigation-div {
+		float: none;
+		margin-left: 0px;
+	}
+	
+	.site-name {
+		float: none;
+		display: block;
+	}
+}
+

@@ -1,0 +1,27 @@
+/* CSS for apps page */
+
+ul.app-list > li {
+	background-color: #EDEEEF;
+	padding: 10px 20px;
+	border-radius: 15px;
+	margin-bottom: 20px;
+}
+
+ul.app-list {
+	list-style: none;
+}
+
+.app-image {
+	height: 100%;
+}
+
+.app-image-container {
+	height: 300px;
+	padding-bottom: 0px;
+}
+
+@media (prefers-color-scheme: dark) {
+	ul.app-list > li {
+		background-color: #161115;
+	}
+}
